@@ -1,29 +1,48 @@
-<h2>Sign up</h2>
+<section class="w-full h-screen flex flex-col items-center">
+  <div class="mb-4 w-full max-w-[568px]">
+    <div class="relative flex head-gradient w-full w-full min-w-[350px] items-center justify-between px-4 pt-8 pb-2">
+      <%= link_to('javascript:history.back()', class: "") do %>
+        <span class="material-symbols-outlined text-white">arrow_back_ios</span>
+      <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <h2 class="text-white">REGISTER</h2>
+      <button class="text-white text-[14px]" onclick="document.getElementById('hidden-submit_2').click()">Next</button>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'bg-white' }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="p-4 field mt-4 flex items-center">
+        <img class="cursor-pointer w-[50px] mr-[14px]" src="<%= asset_path('user.png') %>">
+        <h3 class="text-[#babfc6]">Upload picture</h3>
+      </div>
+      <hr class="w-[95%]">
+
+      <div class="field border-none flex flex-col items-center">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"Full Name", class: "focus:outline-none border-transparent placeholder-[#babfc6] w-full" %>
+        <hr class="w-[95%]">
+      </div>
+      
+      <div class="field flex flex-col items-center">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "border-transparent placeholder-[#babfc6] w-full border border-[#babfc6]" %>
+        <hr class="w-[95%] mb-[10px]">
+      </div>
+      
+      <em class="ml-2 text-[#babfc6]">(<%= @minimum_password_length %> characters minimum)</em>
+      <div class="field flex flex-col items-center">
+        <% if @minimum_password_length %>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "border-transparent placeholder-[#babfc6] w-full border border-[#babfc6]" %>
+        <hr class="w-[95%]">
+      </div>
+
+      <div class="field flex flex-col items-center">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation", class: "border-transparent placeholder-[#babfc6] w-full border border-[#babfc6] pb-3" %>
+      </div>
+      
+      <div class="actions">
+        <%= f.submit "Sign up", id: "hidden-submit_2", class: "hidden" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
