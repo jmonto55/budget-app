@@ -13,8 +13,8 @@
   </head>
 
   <body class="bg-[#f1f1f1]">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-button text-black hover:text-red-500" %>
+    <% end %>    <%= yield %>
   </body>
 </html>
