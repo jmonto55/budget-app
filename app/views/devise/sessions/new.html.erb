@@ -10,8 +10,9 @@
     </div>
     
     <% if alert.present? %>
-      <p class="mt-5 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="notice"><%= alert %></p>
+      <p class="mt-5 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
     <% end %>
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'bg-white' }) do |f| %>
       <div class="field mt-4 flex flex-col items-center">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "placeholder-[#babfc6] w-full border-t-[#babfc5] border-transparent" %>

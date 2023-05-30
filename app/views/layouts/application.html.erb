@@ -16,6 +16,7 @@
   <body class="bg-[#f1f1f1]">
     <% if user_signed_in? %>
       <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-button text-black hover:text-red-500" %>
-    <% end %>    <%= yield %>
+    <% end %>
+    <%= yield %>
   </body>
 </html>
