@@ -1,70 +1,70 @@
-class RecordsController < ApplicationController
-  before_action :set_record, only: %i[ show edit update destroy ]
+class expensesController < ApplicationController
+  before_action :set_expense, only: %i[ show edit update destroy ]
 
-  # GET /records or /records.json
+  # GET /expenses or /expenses.json
   def index
-    @records = Record.all
+    @expenses = expense.all
   end
 
-  # GET /records/1 or /records/1.json
+  # GET /expenses/1 or /expenses/1.json
   def show
   end
 
-  # GET /records/new
+  # GET /expenses/new
   def new
-    @record = Record.new
+    @expense = expense.new
   end
 
-  # GET /records/1/edit
+  # GET /expenses/1/edit
   def edit
   end
 
-  # POST /records or /records.json
+  # POST /expenses or /expenses.json
   def create
-    @record = Record.new(record_params)
+    @expense = expense.new(expense_params)
 
     respond_to do |format|
-      if @record.save
-        format.html { redirect_to record_url(@record), notice: "Record was successfully created." }
-        format.json { render :show, status: :created, location: @record }
+      if @expense.save
+        format.html { redirect_to expense_url(@expense), notice: "expense was successfully created." }
+        format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @record.errors, status: :unprocessable_entity }
+        format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /records/1 or /records/1.json
+  # PATCH/PUT /expenses/1 or /expenses/1.json
   def update
     respond_to do |format|
-      if @record.update(record_params)
-        format.html { redirect_to record_url(@record), notice: "Record was successfully updated." }
-        format.json { render :show, status: :ok, location: @record }
+      if @expense.update(expense_params)
+        format.html { redirect_to expense_url(@expense), notice: "expense was successfully updated." }
+        format.json { render :show, status: :ok, location: @expense }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @record.errors, status: :unprocessable_entity }
+        format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /records/1 or /records/1.json
+  # DELETE /expenses/1 or /expenses/1.json
   def destroy
-    @record.destroy
+    @expense.destroy
 
     respond_to do |format|
-      format.html { redirect_to records_url, notice: "Record was successfully destroyed." }
+      format.html { redirect_to expenses_url, notice: "expense was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_record
-      @record = Record.find(params[:id])
+    def set_expense
+      @expense = expense.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def record_params
-      params.require(:record).permit(:author_id, :name, :amount, :created_at)
+    def expense_params
+      params.require(:expense).permit(:author_id, :name, :amount, :created_at)
     end
 end

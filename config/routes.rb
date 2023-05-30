@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  resources :categories
   devise_for :users
-  resources :groups
-  resources :records
+  resources :expenses
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
