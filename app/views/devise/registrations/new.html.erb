@@ -1,0 +1,58 @@
+<section class="w-full h-screen flex flex-col items-center">
+  <div class="mb-4 w-full max-w-[568px]">
+    <div class="relative flex head-gradient w-full w-full min-w-[350px] items-center justify-between px-4 pt-8 pb-2">
+      <%= link_to('javascript:history.back()', class: "") do %>
+        <span class="material-symbols-outlined text-white">arrow_back_ios</span>
+      <% end %>
+
+      <h2 class="text-white">REGISTER</h2>
+      <button class="text-white text-[14px]" onclick="document.getElementById('hidden-submit_2').click()">Next</button>
+    </div>
+    <% if alert.present? %>
+      <p class="mt-5 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="notice"><%= alert %></p>
+    <% end %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'w-full bg-white flex flex-col' }) do |f| %>
+      <% if resource.errors.any? %>
+        <div class="mt-4 m-auto text-red-500 flex flex-col" id="error_explanation">
+          <ul class="m-auto mt-5 m-auto py-2 px-3 bg-red-50 text-red-500 font-medium rounded-lg inline-block">
+            <% resource.errors.full_messages.each do |msg| %>
+              <li>🎯<%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="p-4 field mt-4 flex items-center">
+        <img class="cursor-pointer w-[50px] mr-[14px]" src="<%= asset_path('user.png') %>">
+        <h3 class="text-[#babfc6]">Upload picture</h3>
+      </div>
+      <hr class="w-[95%]">
+
+      <div class="field border-none flex flex-col">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"Full Name", class: "focus:outline-none border-transparent placeholder-[#babfc6] w-full" %>
+        <hr class="w-[95%]">
+      </div>
+      
+      <div class="field flex flex-col">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "border-transparent placeholder-[#babfc6] w-full border border-[#babfc6]" %>
+        <hr class="w-[95%] mb-[10px]">
+      </div>
+      
+      <em class="ml-2 text-[#babfc6]">(<%= @minimum_password_length %> characters minimum)</em>
+      <div class="field flex flex-col">
+        <% if @minimum_password_length %>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "border-transparent placeholder-[#babfc6] w-full border border-[#babfc6]" %>
+        <hr class="w-[95%]">
+      </div>
+
+      <div class="field flex flex-col items-center">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation", class: "border-transparent placeholder-[#babfc6] w-full border border-[#babfc6] pb-3" %>
+      </div>
+      
+      <div class="actions">
+        <%= f.submit "Sign up", id: "hidden-submit_2", class: "hidden" %>
+      </div>
+    <% end %>
+  </div>
+</section>

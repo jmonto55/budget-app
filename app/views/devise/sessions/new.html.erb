@@ -1,0 +1,35 @@
+<section class="w-full h-screen flex flex-col items-center">
+  <div class="mb-4 flex flex-col w-full max-w-[568px]">
+    <div class="relative flex head-gradient w-full w-full min-w-[350px] items-center justify-between px-4 pt-8 pb-2">
+      <%= link_to('javascript:history.back()', class: "") do %>
+        <span class="material-symbols-outlined text-white">arrow_back_ios</span>
+      <% end %>
+
+      <h2 class="text-white">LOGIN</h2>
+      <button class="text-white text-[14px]" onclick="document.getElementById('hidden-submit').click()">Log in</button>
+    </div>
+    
+    <% if alert.present? %>
+      <p class="mt-5 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="notice"><%= alert %></p>
+    <% end %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'bg-white' }) do |f| %>
+      <div class="field mt-4 flex flex-col items-center">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "placeholder-[#babfc6] w-full border-t-[#babfc5] border-transparent" %>
+        <hr class="w-[95%]">
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "placeholder-[#babfc6] w-full border border-b-[#babfc5] border-transparent" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Log in", id: "hidden-submit", class: "hidden" %>
+      </div>
+    <% end %>
+
+  </div>
+  <div class="text-[#babfc6] hover:text-[#434b54] ease-in-out duration-300">
+    <%= render "devise/shared/links" %>
+  </div>
+</section>
+
