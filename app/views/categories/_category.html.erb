@@ -1,7 +1,7 @@
 <div id="<%= dom_id category %>">
   <%= link_to category do %>
-    <li class="flex justify-between p-4 mb-5 border border-neutral-300 shadow bg-white">
-      <img src="<%= category.icon %>" alt="<%= category.name %>'s icon" class=" w-16 h-16 object-cover">
+    <li class="hover:bg-neutral-200 transition-ease-in-out duration-500 flex justify-between p-4 mb-5 border border-neutral-300 shadow bg-white">
+      <img src="<%= category.icon %>" alt="<%= category.name %>'s icon" class=" w-[100px] h-[100px] object-cover">
       <div class="ml-4 flex flex-col justify-between flex-1 gap-3">
         <h3><%= category.name %></h3>
         <p class="text-xs"><%= category.created_at.strftime('%b %d, %Y') %></p>
