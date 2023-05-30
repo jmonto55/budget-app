@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Nova+Script&family=Satisfy&display=swap');/*
 
 @layer components {
