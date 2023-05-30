@@ -10,7 +10,8 @@
     </div>
     
     <% if alert.present? %>
-      <p class="mt-5 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+      <p class="transition-opacity mt-5 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+      <%= hide_alert_after(4) %>
     <% end %>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'bg-white' }) do |f| %>

@@ -27,3 +27,20 @@ input:focus {
   box-shadow: none !important;
   border: none !important;
 }
+
+.transition-opacity {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.transition-opacity.hiddn {
+  opacity: 0;
+}
+
+.total-spent {
+  top: 70px;
+}
+
+.margin-t {
+  margin-top: 148px
+}

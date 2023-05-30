@@ -7,20 +7,27 @@
       <h2 class="text-white m-auto">CATEGORIES</h2>
     </div>
 
-    <div>
-      <h2 class="mt-[46px] p-4 w-full bg-white border text-neutral-600 border-neutral-300">TOTAL SPENT: <b>$<%= current_user.total_spent %></b></h2>
+    <div class="fixed total-spent w-full max-w-[568px]">
+      <h2 class="p-4 w-full bg-white border text-neutral-600 border-neutral-300">TOTAL SPENT: <b>$<%= current_user.total_spent %></b></h2>
     </div>
     
-    <% if alert.present? %>
-      <p class="mt-5 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="notice"><%= alert %></p>
-    <% end %>
+    <div class="margin-t flex w-full flex-col">
+      <% if alert.present? %>
+        <p class="mt-5 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+      <% end %>
 
-    <div id="categories" class="mt-5 overflow-y-auto mb-[100px]">
-      <%= render @categories %>
-    </div>
+      <% if notice.present? %>
+        <p class="mt-5 m-auto py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block transition-opacity duration-500" id="notice"><%= notice %></p>
+        <%= hide_notice_after(4) %>
+      <% end %>
 
-    <div class="w-full fixed max-w-[568px] bottom-0 flex items-center bg-[#5fb523] hover:bg-[#478e16] p-4 transition-ease-in-out duration-500">
-      <%= link_to 'NEW CATEGORY', new_category_path, class: " rounded-sm border-2 border-neutral-100 flex justify-center text-white w-full min-w-[350px] items-center p-4" %>
+      <div id="categories" class="w-full transition-ease-in duration-500 overflow-y-auto mb-[100px]">
+        <%= render @categories %>
+      </div>
+
+      <div class="transition-ease-in w-full fixed max-w-[568px] bottom-0 flex items-center bg-[#5fb523] hover:bg-[#478e16] p-4 transition-ease-in-out duration-500">
+        <%= link_to 'NEW CATEGORY', new_category_path, class: " rounded-sm border-2 border-neutral-100 flex justify-center text-white w-full min-w-[350px] items-center p-4" %>
+      </div>
     </div>
   </div>
 </section>
