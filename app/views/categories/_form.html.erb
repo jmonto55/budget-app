@@ -10,7 +10,12 @@
       </ul>
     </div>
   <% end %>
-
+  <div>
+      <%= form.text_field :name, placeholder: "Name", class: '' %>
+  </div>
+  <div>
+      <%= form.text_field :icon, placeholder: 'Icon', class: '' %>
+    </div>
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>

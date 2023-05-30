@@ -1,14 +1,24 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<section class="w-full h-screen flex flex-col items-center">
+  <div class="mb-4 flex flex-col w-full max-w-[568px]">
+    <div class="relative flex head-gradient w-full w-full min-w-[350px] items-center px-4 pt-8 pb-2">
+      <%= link_to('javascript:history.back()', class: "") do %>
+        <span class="material-symbols-outlined text-white">menu</span>
+      <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Categories</h1>
-    <%= link_to 'New category', new_category_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
+      <h2 class="text-white m-auto">CATEGORIES</h2>
 
-  <div id="categories" class="min-w-full">
-    <%= render @categories %>
+    </div>
+    
+    <% if alert.present? %>
+      <p class="mt-5 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="notice"><%= alert %></p>
+    <% end %>
+
+    <div id="categories" class="min-w-full">
+      <%= render @categories %>
+    </div>
+
+    <div class="flex items-center bg-[#5fb523] p-4">
+      <%= link_to 'NEW CATEGORY', new_category_path, class: "rounded-sm border-2 border-neutral-100 flex justify-center text-white w-full min-w-[350px] items-center p-4" %>
+    </div>
   </div>
-</div>
+</section>
