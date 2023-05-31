@@ -1,15 +1,33 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @category %>
-
-    <%= link_to 'Edit this category', edit_category_path(@category), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this category', category_path(@category), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+<section class="w-full h-screen flex flex-col items-center">
+  <div class="mb-4 flex flex-col w-full max-w-[568px]">
+    <div class="sticky flex head-gradient max-w-[568px] top-0 w-full w-full min-w-[350px] items-center px-4 pt-8 pb-2">
+      <%= link_to(categories_path, class: "") do %>
+        <span class="material-symbols-outlined text-white hover:text-neutral-300">arrow_back_ios</span>
+      <% end %>
+      <h2 class="text-white m-auto"><%= @category.name.upcase %></h2>
+      <%= link_to 'Edit', edit_category_path(@category), class: "hover:text-neutral-300 text-white text-[16px]" %>
     </div>
-    <%= link_to 'Back to categories', categories_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="total-spent w-full max-w-[568px]">
+      <h2 class="m-auto p-4 w-full bg-white border text-neutral-600 border-neutral-300">TOTAL SPENT: <b>$<%= @category.total_amount %></b></h2>
+    </div>
+    <div class="mt-5 mx-auto w-full flex flex-col items-center">
+      <div class="mx-auto w-full">
+        <% if notice.present? %>
+          <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+        <% end %>
+
+        <div class="total-spent w-full max-w-[568px]">
+          <%= render @expenses %>
+        </div>
+
+        <div class="inline-block ml-2">
+          <%= button_to 'Destroy this category', category_path(@category), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        </div>
+
+        <div class="m-auto fixed transition-ease-in w-full max-w-[568px] bottom-0 flex items-center bg-[#5fb523] hover:bg-[#478e16] p-4 transition-ease-in-out duration-500">
+          <%= link_to 'NEW EXPENSE', new_category_expense_path(@category, category_id: @category.id), class: "m-auto rounded-sm border-2 border-neutral-100 flex justify-center text-white w-full min-w-[350px] items-center p-4" %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

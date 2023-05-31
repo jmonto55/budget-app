@@ -7,7 +7,9 @@ class CategoriesController < ApplicationController
   end
 
   # GET /categories/1 or /categories/1.json
-  def show; end
+  def show
+    @expenses = Expense.where(user_id: current_user.id, category_id: @category.id)
+  end
 
   # GET /categories/new
   def new

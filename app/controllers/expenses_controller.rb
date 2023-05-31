@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
-    @expenses = expense.all
+    @expenses = Expense.all
   end
 
   # GET /expenses/1 or /expenses/1.json
@@ -11,7 +11,8 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/new
   def new
-    @expense = expense.new
+    @category = Category.find(params[:category_id])
+    @expense = @category.expenses.build
   end
 
   # GET /expenses/1/edit
@@ -19,7 +20,9 @@ class ExpensesController < ApplicationController
 
   # POST /expenses or /expenses.json
   def create
-    @expense = expense.new(expense_params)
+    @category = Category.find(params[:category_id])
+    @expense = @category.expenses.build(expense_params)
+    @expense.user_id = current_user.id
 
     respond_to do |format|
       if @expense.save
@@ -31,6 +34,17 @@ class ExpensesController < ApplicationController
       end
     end
   end
+  # def create
+  #   @category = Category.find(params[:category_id])
+  #   @expense = @category.expenses.build(expense_params)
+  
+  #   if @expense.save
+  #     redirect_to category_path(@category), notice: 'Expense was successfully created.'
+  #   else
+  #     puts @expense.errors.inspect # Add this line to inspect the errors object
+  #     render :new
+  #   end
+  # end
 
   # PATCH/PUT /expenses/1 or /expenses/1.json
   def update
@@ -59,11 +73,11 @@ class ExpensesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_expense
-    @expense = expense.find(params[:id])
+    @expense = Expense.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def expense_params
-    params.require(:expense).permit(:author_id, :name, :amount, :created_at)
+    params.require(:expense).permit(:user_id, :name, :amount, :created_at, :category_id)
   end
 end
