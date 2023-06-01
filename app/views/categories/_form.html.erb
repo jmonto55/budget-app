@@ -9,11 +9,11 @@
     </div>
   <% end %>
   <div>
-      <%= form.text_field :name, placeholder: "Name", class: 'mt-4 placeholder-[#babfc6] w-full border-t-[#babfc5] border-transparent w-full' %>
+      <%= form.text_field :name, placeholder: "Name", class: 'mt-4 placeholder-[#babfc6] w-full border-t-[#babfc5] border-transparent w-full', required: true %>
   </div>
   <hr class="m-auto w-[95%]">
   <div>
-      <%= form.text_field :icon, placeholder: 'Icon', class: 'placeholder-[#babfc6] w-full border-b-[#babfc5] border-transparent w-full' %>
+      <%= form.text_field :icon, placeholder: 'Icon', class: 'placeholder-[#babfc6] w-full border-b-[#babfc5] border-transparent w-full', required: true %>
     </div>
   <div class="">
     <%= form.submit "Create", id: "hidden-submit_3", class: "hidden" %>

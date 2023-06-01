@@ -48,8 +48,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    Expense.where(user_id: current_user.id).destroy_all
     @user.categories.destroy_all
-    @user.expenses.destroy_all
     @user.destroy
 
     respond_to do |format|

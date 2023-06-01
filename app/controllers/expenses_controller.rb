@@ -14,6 +14,7 @@ class ExpensesController < ApplicationController
   def new
     @category = Category.find(params[:category_id])
     @expense = current_user.expenses.build
+    @categories = Category.where(user: current_user).order(created_at: :desc)
   end
 
   # GET /expenses/1/edit

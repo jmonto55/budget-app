@@ -1,4 +1,4 @@
-<section class="w-full h-screen flex flex-col items-center">
+<section class="w-full h-full flex flex-col items-center">
   <div class="mb-4 flex flex-col w-full max-w-[568px]">
     <div class="sticky flex head-gradient max-w-[568px] top-0 w-full w-full min-w-[350px] items-center px-4 pt-8 pb-2">
       <%= link_to(categories_path, class: "") do %>
@@ -7,9 +7,10 @@
       <h2 class="text-white m-auto"><%= @category.name.upcase %></h2>
       <%= link_to 'Edit', edit_category_path(@category), class: "hover:text-neutral-300 text-white text-[16px]" %>
     </div>
-    <div class="total-spent w-full max-w-[568px] m-auto p-4 px-6 w-full bg-white border text-neutral-600 border-neutral-300 justify-between flex">
-      <h2 class="">Total Spent:</h2>
-      <b>$<%= @expenses.map(&:amount).reduce(:+) || 0 %></b>
+    <div class="items-center total-spent w-full max-w-[568px] m-auto p-4 w-full bg-white border text-neutral-600 border-neutral-300 flex">
+      <img src="<%= @category.icon %>" alt="<%= @category.name %>'s icon" class=" w-[40px] h-[40px] object-cover">
+      <h2 class="ml-4">Total Spent:</h2>
+      <b class="ml-auto">$<%= @expenses.map(&:amount).reduce(:+) || 0 %></b>
     </div>
     <% if notice.present? %>
       <p class="m-auto py-2 px-3 bg-green-50 mt-5 text-green-500 font-medium rounded-lg inline-block transition-opacity duration-500" id="notice"><%= notice %></p>
