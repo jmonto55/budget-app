@@ -12,20 +12,16 @@
       <%= render "form", expense: @expense %>
     </div>
     <h2 class="mt-4 p-2 w-full bg-white shadow">Select related categories 👇🏽</h2>
-    <div class="mx-auto w-full">
-      <table class="w-full mt-4">
-        <% @categories.in_groups_of(2, false) do |group| %>
-          <tr class="w-full flex justify-between p-2">
-            <% group.each do |category| %>
-              <td class="w-1/2 mt-4">
-                <%= check_box_tag "expense[category_ids][]", category.id %>
-                <%= image_tag category.icon, alt: category.name, class: "w-6 h-6 inline-block mr-2" %>
-                <%= label_tag "expense_category_ids_#{category.id}", category.name %>
-              </td>
-            <% end %>
-          </tr>
+    <div class= "grid grid-cols-2 p-4 gap-y-4 border border-neutral-200 bg-white shadow">
+      <% @categories.each do |category| %>
+        <% unless category.id == params[:category_id].to_i %>
+          <div class="flex flex-nowrap items-center gap-2 text-sm">
+            <%= check_box_tag 'category_ids[]', category.id %>
+            <%= image_tag category.icon, alt: category.name, class: "w-6 h-6 inline-block mr-2" %>
+            <%= label_tag "category_#{category.id}", category.name %>
+          </div>
         <% end %>
-      </table>
+      <% end %>
     </div>
   </div>
 </section>

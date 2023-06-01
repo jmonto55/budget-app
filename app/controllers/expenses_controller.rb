@@ -72,4 +72,14 @@ class ExpensesController < ApplicationController
   def expense_params
     params.require(:expense).permit(:user_id, :name, :amount, :category_id)
   end
+
+  def categories
+    main_category = Category.find(params[:category_id])
+
+    extra_categories = params[:categories] ? Category.where(id: params[:categories][:category_ids]).to_a : []
+    categories = []
+
+    categories << main_category << extra_categories
+    categories.flatten
+  end
 end
