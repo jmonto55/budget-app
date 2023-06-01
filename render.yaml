@@ -1,10 +1,10 @@
 databases:
-  - name: budgetDb
+  - name: postgres
     ipAllowList: []
 
 services:
   - type: web
-    name: budgetApp
+    name: rails
     plan: free
     env: ruby
     buildCommand: "./bin/render-build.sh"
@@ -17,7 +17,7 @@ services:
           name: postgres
           property: connectionString
   - type: redis
-    name: budgetRedis
+    name: redis
     ipAllowList: []
     plan: free
     maxmemoryPolicy: noeviction
