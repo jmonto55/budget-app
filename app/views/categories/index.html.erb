@@ -1,13 +1,15 @@
-<section class="w-full h-full flex flex-col items-center">
+<section class="w-full h-full flex flex-col items-center mt-[100px]">
   <div class="mb-4 flex flex-col w-full max-w-[568px]">
     <div class="fixed flex head-gradient max-w-[568px] top-0 w-full w-full min-w-[350px] items-center px-4 pt-8 pb-2">
-      <%= link_to('javascript:history.back()', class: "") do %>
-        <span class="material-symbols-outlined text-white">menu</span>
+      <% if user_signed_in? %>
+        <%= button_to destroy_user_session_path, method: :delete, class: "logout-button text-black hover:text-red-500" do %>
+          <span class="material-symbols-outlined text-white hover:text-neutral-200">logout</span>
+        <% end %>
       <% end %>
-      <h2 class="text-white m-auto">CATEGORIES</h2>
+      <h2 class="text-white m-auto pb-2">CATEGORIES</h2>
     </div>
 
-    <div class="fixed total-spent w-full max-w-[568px] flex justify-between p-4 w-full bg-white border text-neutral-600 border-neutral-300">
+    <div class="mb-[10px] fixed total-spent w-full max-w-[568px] flex justify-between p-4 w-full bg-white border text-neutral-600 border-neutral-300">
       <h2 class="">Total:</h2>
        <b>$<%= current_user.total_spent %></b>
     </div>
@@ -18,11 +20,11 @@
       <% end %>
 
       <% if notice.present? %>
-        <p class="m-auto py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block transition-opacity duration-500" id="notice"><%= notice %></p>
+        <p class="m-auto py-2 px-3 mt-14 bg-green-50 text-green-500 font-medium rounded-lg inline-block transition-opacity duration-500" id="notice"><%= notice %></p>
         <%= hide_notice_after(4) %>
       <% end %>
 
-      <div id="categories" class="w-full transition-ease-in duration-500 overflow-y-auto mb-[100px]">
+      <div id="categories" class="mt-10 w-full transition-ease-in duration-500 mb-[90px]">
         <%= render @categories %>
       </div>
 

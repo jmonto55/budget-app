@@ -15,8 +15,5 @@
 
   <body class="bg-[#f1f1f1] flex flex-col h-screen">
     <%= yield %>
-    <% if user_signed_in? %>
-      <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-button text-black hover:text-red-500" %>
-    <% end %>
   </body>
 </html>
