@@ -15,6 +15,7 @@ class CategoriesController < ApplicationController
   def new
     @category = current_user.categories.build
   end
+
   # GET /categories/1/edit
   def edit; end
 
@@ -24,7 +25,9 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to categories_url, notice: "Category #{category_params[:name]} was successfully created." }
+        format.html do
+          redirect_to categories_url, notice: "Category #{category_params[:name]} was successfully created."
+        end
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,7 +39,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1 or /categories/1.json
   def update
     @category = Category.find(params[:id])
-  
+
     if @category.update(category_params)
       redirect_to @category, notice: 'Category was successfully updated.'
     else
