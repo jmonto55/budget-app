@@ -40,3 +40,7 @@ input:focus {
 .total-spent {
   top: 70px;
 }
+
+.special-margin {
+  margin-top: 148px;
+}
