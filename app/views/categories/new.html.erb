@@ -1,7 +1,17 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New category</h1>
+<section class="w-full h-screen flex flex-col items-center">
+  <div class="mb-4 flex flex-col w-full max-w-[568px]">
+    <div class="sticky flex head-gradient max-w-[568px] top-0 w-full w-full min-w-[350px] items-center px-4 pt-8 pb-2">
+      <%= link_to('javascript:history.back()', class: "") do %>
+        <span class="material-symbols-outlined text-white">arrow_back_ios</span>
+      <% end %>
+      <h2 class="text-white m-auto">NEW CATEGORY</h2>
+      <button class="text-white text-[14px]" onclick="document.getElementById('hidden-submit_3').click()">Create</button>
+    </div>
 
-  <%= render "form", category: @category %>
+    <div class="mx-auto w-full">
 
-  <%= link_to 'Back to categories', categories_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+      <%= render "form", category: @category %>
+
+    </div>
+  </div>
+</section>

@@ -1,9 +1,10 @@
-<section class="w-full h-screen flex-col flex justify-evenly items-center">
+<section class="w-full h-full flex-col flex justify-evenly items-center">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <p class="transition-opacity py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <%= hide_notice_after(4) %>
   <% end %>
-  <h1 class="bold text-5xl logo-font text-[#434b54]">SmartBudget</h1>
-  <div class="flex flex-col justify-evenly items-center">
+  <h1 class="bold text-5xl logo-font text-[#434b54] transition-ease-in duration-500">SmartBudget</h1>
+  <div class="flex flex-col justify-evenly items-center transition-ease-in duration-500">
     <%= link_to 'LOG IN', new_user_session_path, class: "flex justify-center rounded-sm w-full max-w-[400px] min-w-[350px] py-3 px-5 bg-[#5c97d3] text-white block font-medium hover:bg-[#2e7ac7] ease-in-out duration-300" %>
     <%= link_to 'SIGN UP', new_user_registration_path, class: "flex justify-center rounded-sm w-full max-w-[400px] min-w-[350px] py-3 px-5 text-[#86898e] block font-medium hover:bg-neutral-200 ease-in-out duration-300" %>
   </div>

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     @users = User.all
+    @content_margin_top = notice.present? ? 50 : 0
   end
 
   # GET /users/1 or /users/1.json
@@ -47,6 +48,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    Expense.where(user_id: current_user.id).destroy_all
     @user.categories.destroy_all
     @user.destroy
 

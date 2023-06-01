@@ -3,8 +3,7 @@
     <li class="hover:bg-neutral-200 transition-ease-in-out duration-500 flex justify-between p-4 mb-5 border border-neutral-300 shadow bg-white">
       <img src="<%= category.icon %>" alt="<%= category.name %>'s icon" class=" w-[100px] h-[100px] object-cover">
       <div class="ml-4 flex flex-col justify-between flex-1 gap-3">
-        <h3><%= category.name %></h3>
-        <p class="text-xs"><%= category.created_at.strftime('%b %d, %Y') %></p>
+        <h3 class="text-xl"><%= category.name %></h3>
       </div>
       <div>
         <p class="font-bold">$<%= category.total_amount.round(2) %></p>

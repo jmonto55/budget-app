@@ -3,7 +3,8 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
-    @expenses = expense.all
+    @category = Category.find(params[:category_id])
+    @expenses = @category.expenses.order(id: :desc)
   end
 
   # GET /expenses/1 or /expenses/1.json
@@ -11,7 +12,9 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/new
   def new
-    @expense = expense.new
+    @category = Category.find(params[:category_id])
+    @expense = current_user.expenses.build
+    @categories = Category.where(user: current_user).order(created_at: :desc)
   end
 
   # GET /expenses/1/edit
@@ -19,11 +22,14 @@ class ExpensesController < ApplicationController
 
   # POST /expenses or /expenses.json
   def create
-    @expense = expense.new(expense_params)
+    @category = Category.find(params[:category_id])
+    @expense = current_user.expenses.build(expense_params)
+    @expense.user_id = current_user.id
+    @category.expenses << @expense
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to expense_url(@expense), notice: 'expense was successfully created.' }
+        format.html { redirect_to category_url(@category), notice: 'expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +56,7 @@ class ExpensesController < ApplicationController
     @expense.destroy
 
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: 'expense was successfully destroyed.' }
+      format.html { redirect_to category_url(@expense.category_id), notice: 'expense was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -59,11 +65,21 @@ class ExpensesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_expense
-    @expense = expense.find(params[:id])
+    @expense = Expense.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def expense_params
-    params.require(:expense).permit(:author_id, :name, :amount, :created_at)
+    params.require(:expense).permit(:user_id, :name, :amount, :category_id)
+  end
+
+  def categories
+    main_category = Category.find(params[:category_id])
+
+    extra_categories = params[:categories] ? Category.where(id: params[:categories][:category_ids]).to_a : []
+    categories = []
+
+    categories << main_category << extra_categories
+    categories.flatten
   end
 end

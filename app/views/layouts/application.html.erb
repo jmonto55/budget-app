@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
 
-  <body class="bg-[#f1f1f1]">
+  <body class="bg-[#f1f1f1] flex flex-col h-screen">
+    <%= yield %>
     <% if user_signed_in? %>
       <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-button text-black hover:text-red-500" %>
     <% end %>
-    <%= yield %>
   </body>
 </html>

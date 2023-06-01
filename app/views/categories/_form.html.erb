@@ -1,22 +1,21 @@
-<%= form_with(model: category, class: "contents") do |form| %>
+<%= form_with(model: category, class: "w-full bg-white flex flex-col") do |form| %>
   <% if category.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
-      <ul>
-        <% category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+    <div class="m-auto text-red-500 flex flex-col" id="error_explanation">
+      <ul class="m-auto mt-5 m-auto py-2 px-3 bg-red-50 text-red-500 font-medium rounded-lg inline-block">
+        <% category.errors.full_messages.each do |msg| %>
+          <li>🎯<%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
   <div>
-      <%= form.text_field :name, placeholder: "Name", class: '' %>
+      <%= form.text_field :name, placeholder: "Name", class: 'mt-4 placeholder-[#babfc6] w-full border-t-[#babfc5] border-transparent w-full', required: true %>
   </div>
+  <hr class="m-auto w-[95%]">
   <div>
-      <%= form.text_field :icon, placeholder: 'Icon', class: '' %>
+      <%= form.text_field :icon, placeholder: 'Icon', class: 'placeholder-[#babfc6] w-full border-b-[#babfc5] border-transparent w-full', required: true %>
     </div>
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="">
+    <%= form.submit "Create", id: "hidden-submit_3", class: "hidden" %>
   </div>
 <% end %>

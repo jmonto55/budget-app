@@ -4,7 +4,7 @@ class Category < ApplicationRecord
                    format: { with: %r{(http(s?):)([/|.\w\s-])*\.(?:jpg|gif|png|jpeg)}, message: 'Invalid format' }
 
   belongs_to :user
-  has_and_belongs_to_many :expenses
+  has_and_belongs_to_many :expenses, foreign_key: :category_id, dependent: :destroy
 
   def total_amount
     expenses.map(&:amount).reduce(:+) || 0

@@ -1,7 +1,27 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New expense</h1>
+<section class="w-full h-screen flex flex-col items-center">
+  <div class="mb-4 flex flex-col w-full max-w-[568px]">
+    <div class="sticky flex head-gradient max-w-[568px] top-0 w-full w-full min-w-[350px] items-center px-4 pt-8 pb-2">
+      <%= link_to('javascript:history.back()', class: "") do %>
+        <span class="material-symbols-outlined text-white">arrow_back_ios</span>
+      <% end %>
+      <h2 class="text-white m-auto">NEW EXPENSE</h2>
+      <button class="text-white text-[14px]" onclick="document.getElementById('hidden-submit_4').click()">Create</button>
+    </div>
 
-  <%= render "form", expense: @expense %>
-
-  <%= link_to 'Back to expenses', expenses_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+    <div class="mx-auto w-full shadow">
+      <%= render "form", expense: @expense %>
+    </div>
+    <h2 class="mt-4 p-2 w-full bg-white shadow">Select related categories 👇🏽</h2>
+    <div class= "grid grid-cols-2 p-4 gap-y-4 border border-neutral-200 bg-white shadow">
+      <% @categories.each do |category| %>
+        <% unless category.id == params[:category_id].to_i %>
+          <div class="flex flex-nowrap items-center gap-2 text-sm">
+            <%= check_box_tag 'category_ids[]', category.id %>
+            <%= image_tag category.icon, alt: category.name, class: "w-6 h-6 inline-block mr-2" %>
+            <%= label_tag "category_#{category.id}", category.name %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
