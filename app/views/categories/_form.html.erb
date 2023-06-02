@@ -25,22 +25,8 @@
       ["🧍🏽", "https://img.icons8.com/2266EE/color/debt"],
     ]), class: '', id: 'icon-select' %>
   </div>
-  <img id="icon-preview" src="" alt="" class="w-full">
+
   <div class="">
     <%= form.submit "Create", id: "hidden-submit_3", class: "hidden" %>
   </div>
 <% end %>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const iconPreview = document.getElementById('icon-preview');
-    const iconSelect = document.getElementById('icon-select');
-    
-
-    iconSelect.addEventListener('change', (event) => {
-      const selectedOption = event.target.options[event.target.selectedIndex];
-      const selectedOptionSrc = selectedOption.value;
-      iconPreview.src = selectedOptionSrc;
-    });
-  });
-</script>
