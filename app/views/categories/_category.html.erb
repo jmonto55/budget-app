@@ -1,0 +1,14 @@
+<div id="<%= dom_id category %>">
+  <%= link_to category, id: dom_id(category) do %>
+    <li class="p-4 hover:bg-neutral-200 transition-ease-in-out duration-500 flex justify-between p- mb-5 border border-neutral-300 shadow bg-white">
+      
+      <div class=" flex flex-col justify-between flex-1 gap-3">
+        <h3 class="text-xl"><%= category.name %></h3>
+        <img src="<%= category.icon %>" alt="<%= category.name %>'s icon" class="w-[70px] h-[70px] object-cover">
+      </div>
+      <div class="">
+        <p class="font-bold">$<%= category.total_amount.round(2) %></p>
+      </div>
+    </li>
+  <% end %>
+</div>

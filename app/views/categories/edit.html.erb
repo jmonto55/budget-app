@@ -1,0 +1,20 @@
+<section class="w-full h-screen flex flex-col items-center">
+  <div class="mb-4 flex flex-col w-full max-w-[568px]">
+    <div class="sticky flex head-gradient max-w-[568px] top-0 w-full w-full min-w-[350px] items-center px-4 pt-8 pb-2">
+      <%= link_to(categories_path, class: "") do %>
+        <span class="material-symbols-outlined text-white hover:text-neutral-300">arrow_back_ios</span>
+      <% end %>
+      <h2 class="text-white m-auto">EDIT CATEGORY</h2>
+      <button class="text-white text-[14px] hover:text-neutral-200" onclick="document.getElementById('hidden-submit_3').click()">Save</button>
+    </div>
+
+    <div class="mx-auto w-full">
+      <%= render "form", category: @category %>
+      <div class="inline-block mt-2 flex justify-end">
+        <%= button_to category_path(@category), method: :delete, class: "text-neutral-500 hover:text-neutral-700 mt-2" do %>
+          <span class="material-symbols-outlined justify-self-end">delete</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

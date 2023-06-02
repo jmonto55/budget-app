@@ -1,0 +1,30 @@
+<section class="w-full h-screen flex flex-col items-center">
+  <div class="mb-4 w-full max-w-[568px]">
+    <div class="relative flex head-gradient w-full w-full min-w-[350px] items-center px-4 pt-8 pb-2">
+      <%= link_to('javascript:history.back()', class: "") do %>
+        <span class="material-symbols-outlined text-white">arrow_back_ios</span>
+      <% end %>
+      <h2 class="text-white m-auto">FORGOT YOUR PASSWORD?</h2>
+    </div>
+      
+
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <% if resource.errors.any? %>
+          <div class="mt-2 m-auto text-red-500 flex flex-col" id="error_explanation">
+            <ul class="m-auto mt-2 m-auto py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block">
+              <% resource.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "focus:outline-none border-transparent placeholder-[#babfc6] w-full" %>
+        </div>
+
+        <div class="actions flex w-full">
+          <%= f.submit "Send me reset password instructions", class: "text-[#babfc6] mt-4 cursor-pointer hover:text-[#434b54] ease-in-out duration-300 m-auto" %>
+        </div>
+      <% end %>    
+  </div>
+</section>

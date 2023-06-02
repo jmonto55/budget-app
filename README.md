@@ -28,7 +28,7 @@
 
 # 📖 Budget App <a name="about-project"></a>
 
-> Functional website that will show a list of ingredients, recipes and empower users to interact with them by adding new foods, recipes and downloading shooping lists.
+> Full-stack CRUD application to manage your personal budget, fully tested with unit specs and integration specs, it was built using Ruby on Rails, PostgreSQL, and TailwindsCSS.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -63,7 +63,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo](https://rails-w71d.onrender.com)
+- [Live Demo](https://rails-kb31.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,6 +108,7 @@ Create the databases,run migrations, and populate it with seed data:
 ```sh
 rails db:create
 rails db:migrate
+rails db:seed
 ```
 
 ### Usage
@@ -141,8 +142,8 @@ rspec
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **CRUD for articles**
-- [ ] **Awesome UI**
+- **Add image to sign up**
+- **Build APIs**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -162,7 +163,8 @@ If you like this project please give it a star 😁🌟✨
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-Thanks to Microverse for providing us with the right material to aid this project development
+Special thanks to [Gregoire Vella](https://www.behance.net/gregoirevella) for the awesome design.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Nova+Script&family=Satisfy&display=swap');/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+.head-gradient {
+  background: linear-gradient(to top, #2a63a5, #3a7cc4);
+}
+
+.logo-font {
+  font-family: 'Lobster', cursive;
+}
+
+.arrow-size {
+  font-size: 5rem;
+}
+
+input:focus {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.transition-opacity {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.transition-opacity.hiddn {
+  opacity: 0;
+}
+
+.total-spent {
+  top: 70px;
+}
+
+.special-margin {
+  margin-top: 148px;
+}
