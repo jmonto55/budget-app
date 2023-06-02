@@ -12,9 +12,22 @@
       <%= form.text_field :name, placeholder: "Name", class: 'mt-4 placeholder-[#babfc6] w-full border-t-[#babfc5] border-transparent w-full', required: true %>
   </div>
   <hr class="m-auto w-[95%]">
-  <div>
-      <%= form.text_field :icon, placeholder: 'Icon', class: 'placeholder-[#babfc6] w-full border-b-[#babfc5] border-transparent w-full', required: true %>
-    </div>
+  <div class="p-4 w-full flex flex-col">
+    <%= form.label :icon, class: "text-[#babfc6] mb-4" %>
+    <%= form.select :icon, options_for_select([
+      ["🚗", "https://img.icons8.com/2266EE/color/sedan"],
+      ["🏠", "https://img.icons8.com/2266EE/color/home"],
+      ["🥗", "https://img.icons8.com/2266EE/color/food-receiver"],
+      ["🏥", "https://img.icons8.com/2266EE/color/hospital"],
+      ["💹", "https://img.icons8.com/2266EE/color/bank"],
+      ["🏈", "https://img.icons8.com/2266EE/color/sport"],
+      ["🐕‍🦺", "https://img.icons8.com/2266EE/color/dog"],
+      ["👜", "https://img.icons8.com/2266EE/color/plastic-bag"],
+      ["👤", "https://img.icons8.com/2266EE/color/user"],
+      ["🐈‍⬛", "https://img.icons8.com/2266EE/color/cat"],
+    ]), class: '', id: 'icon-select' %>
+  </div>
+
   <div class="">
     <%= form.submit "Create", id: "hidden-submit_3", class: "hidden" %>
   </div>

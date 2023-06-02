@@ -10,7 +10,7 @@
     <div class="items-center total-spent w-full max-w-[568px] m-auto p-4 w-full bg-white border text-neutral-600 border-neutral-300 flex">
       <img src="<%= @category.icon %>" alt="<%= @category.name %>'s icon" class=" w-[40px] h-[40px] object-cover">
       <h2 class="ml-4">Total Spent:</h2>
-      <b class="ml-auto">$<%= @expenses.map(&:amount).reduce(:+) || 0 %></b>
+      <b class="ml-auto">$<%= @category.expenses.map(&:amount).reduce(:+) || 0 %></b>
     </div>
     <% if notice.present? %>
       <p class="m-auto py-2 px-3 bg-green-50 mt-5 text-green-500 font-medium rounded-lg inline-block transition-opacity duration-500" id="notice"><%= notice %></p>
@@ -23,7 +23,7 @@
     <div class="mt-5 mx-auto w-full flex flex-col items-center">
       <div class="mx-auto w-full">
         <div class="total-spent w-full max-w-[568px]">
-          <%= render @expenses %>
+          <%= render @category.expenses %>
         </div>
 
         <div class="m-auto fixed transition-ease-in w-full max-w-[568px] bottom-0 flex items-center bg-[#5fb523] hover:bg-[#478e16] p-4 transition-ease-in-out duration-500">
