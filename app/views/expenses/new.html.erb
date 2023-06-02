@@ -11,17 +11,5 @@
     <div class="mx-auto w-full shadow">
       <%= render "form", expense: @expense %>
     </div>
-    <h2 class="mt-4 p-2 w-full bg-white shadow">Select related categories 👇🏽</h2>
-    <div class= "grid grid-cols-2 p-4 gap-y-4 border border-neutral-200 bg-white shadow">
-      <% @categories.each do |category| %>
-        <% unless category.id == params[:category_id].to_i %>
-          <div class="flex flex-nowrap items-center gap-2 text-sm">
-            <%= check_box_tag 'category_ids[]', category.id %>
-            <%= image_tag category.icon, alt: category.name, class: "w-6 h-6 inline-block mr-2" %>
-            <%= label_tag "category_#{category.id}", category.name %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
   </div>
 </section>

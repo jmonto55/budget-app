@@ -18,9 +18,17 @@
   <div class="">
     <%= form.text_field :amount, placeholder: "Amount", class: 'placeholder-[#babfc6] w-full border-b-[#babfc5] border-transparent w-full', required: true %>
   </div>
-
+  <h2 class="mt-2 p-2 w-full bg-white shadow">Select related categories 👇🏽</h2>
+  <div class="grid grid-cols-2">
+    <% Category.where.not(id: @category.id).each do |category| %>
+      <div class="flex items-center p-4">
+        <%= check_box_tag 'category_ids[]', category.id %>
+        <%= image_tag category.icon, alt: category.name, class: "w-6 h-6 inline-block ml-2" %>
+        <%= label_tag "category_#{category.id}", category.name, class: "ml-4" %>
+      </div>
+    <% end %>
+  </div>
   <div class="">
     <%= form.submit "Create", id: "hidden-submit_4", class: "hidden" %>
   </div>
 <% end %>
-    

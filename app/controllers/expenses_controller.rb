@@ -26,6 +26,12 @@ class ExpensesController < ApplicationController
     @expense = current_user.expenses.build(expense_params)
     @expense.user_id = current_user.id
     @category.expenses << @expense
+    category_ids = params[:category_ids]
+
+    categories = Category.where(id: category_ids)
+    categories.each do |category|
+      category.expenses << @expense
+    end
 
     respond_to do |format|
       if @expense.save
