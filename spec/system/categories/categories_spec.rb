@@ -33,7 +33,7 @@ RSpec.describe 'Manage Category', type: :system do
     sleep(2)
     click_button('create-category')
     expect(page).to have_content('Category Car was successfully created.')
-    click_link("Car")
+    click_link('Car')
     sleep(2)
   end
 end

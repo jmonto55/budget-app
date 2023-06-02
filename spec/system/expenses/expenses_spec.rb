@@ -20,7 +20,7 @@ RSpec.describe 'Manage Expenses', type: :system do
     click_button('create-category')
     expect(page).to have_content('Category Car was successfully created.')
     sleep(2)
-    click_link("Car")
+    click_link('Car')
     click_link_or_button('NEW EXPENSE')
     fill_in 'Name', with: @expense.name
     fill_in 'Amount', with: @expense.amount

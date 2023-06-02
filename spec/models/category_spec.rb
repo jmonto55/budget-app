@@ -8,15 +8,15 @@ RSpec.describe Category, type: :model do
   let(:expense1) do
     Expense.create(user_id: user.id, category_id: category.id, name: 'Movie tickets', amount: 20.0)
   end
-  
+
   let(:expense2) do
     Expense.create(user_id: user.id, category_id: category.id, name: 'Popcorn', amount: 5.0)
   end
-  
+
   let(:expense3) do
     Expense.create(user_id: user.id, category_id: category.id, name: 'Soda', amount: 3.0)
   end
-  
+
   describe 'attributes' do
     it 'has a name' do
       expect(category.name).to eq('Leisure')

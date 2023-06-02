@@ -8,7 +8,7 @@ RSpec.describe Expense, type: :model do
   let(:expense) do
     Expense.create(user_id: user.id, category_id: category.id, name: 'Movie tickets', amount: 20.0)
   end
-  
+
   describe 'attributes' do
     it 'has a name' do
       expect(expense.name).to eq('Movie tickets')
